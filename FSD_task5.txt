@@ -1,0 +1,45 @@
+Solve using array functions on rest countries data.using index.html and script.js file.
+
+1.Get all the countries from Asia continent/region using Filter function
+2.Get all the countries with population of less than 2 lakh using Filter function
+3.Print the country which use US Dollars (USD) as currency
+4.Print the sum of the total population of the countries by using reduce function
+
+Solution:
+
+var request = new XMLHttpRequest();
+request.open('Get', 'https://restcountries.eu/rest/v2/all', true);
+request.send();
+request.onload =function()
+{
+    var data = JSON.parse(this.response);
+    console.log(data.filter(population));
+
+    var Asiacount = data.filter((element)=>element.region === "Asia");
+    console.log(Asiacount);
+
+    var popcount = data.filter((element)=>element.population<200000);
+    console.log(popcount);
+
+     var uscurr = data.filter((element)=>{
+         for(let i in element.currencies){
+         if(element.currencies[i].code === "USD")
+         return true;
+         
+        }
+     });
+     
+     console.log(uscurr);
+     var pop=[]
+     var uscurr = data.filter((element)=>{
+        for(let i in element.population){
+        pop[i] =element.population[i].code       
+       }
+    });
+    console.log(pop);
+     
+    var totpop = data.element.population..reduce((acc,ele)=>acc + ele);
+    console.log(totpop);
+    //console.log("Name :" + data[i].name +";Capital="+ data[i].capital +";Flag="+data[i].flag);
+
+}
